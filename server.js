@@ -18,7 +18,7 @@ var given_room = ""
 
 app.use(express.static(__dirname + '/'));
 
-server.listen(process.env.PORT || 3000, 'mediaserver');
+server.listen(process.env.PORT || 3000);
 console.log('Server Started . . .');
 
 
