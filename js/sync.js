@@ -259,9 +259,13 @@ function emptyQueue(roomnum) {
     })
 }
 
-function changeVideoParse(roomnum) {
-  var videoId = document.getElementById("inputVideoId").value
-  changeVideo(roomnum, videoId)
+function changeVideoParse(roomnum, direct=false, url="") {
+    if(direct === true) {
+        changeVideo(roomnum, url)
+    } else {
+        var videoId = document.getElementById("inputVideoId").value
+        changeVideo(roomnum, videoId)
+    }
 }
 
 // Change playVideo

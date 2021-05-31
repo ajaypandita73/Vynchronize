@@ -1,4 +1,5 @@
-var currPlayer = 0
+var currPlayer = 3
+htmlVideoPlayback()
 
 // 0 - YouTube
 // 1 - Daily Motion
@@ -203,6 +204,13 @@ socket.on('createVimeo', function(data) {
 socket.on('createHTML5', function(data) {
     if (currPlayer != 3) {
 
+        htmlVideoPlayback()
+        betaAlert()
+    }
+});
+
+function htmlVideoPlayback() {
+
         var you = document.getElementById('playerArea');
         you.style.display = 'none';
 
@@ -227,10 +235,7 @@ socket.on('createHTML5', function(data) {
         // document.getElementById('html5-input').style.display = 'block'
         document.getElementById('inputVideoId').placeholder = 'Direct mp4/webm URL'
         // document.getElementById('html5-message').style.display = 'block'
-
-        betaAlert()
-    }
-});
+}
 
 
 // changeSinglePlayer(roomnum, playerId){

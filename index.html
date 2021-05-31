@@ -56,13 +56,8 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
+            <div class="collapse navbar-collapse" id="navbarResponsive" style="display: none !important">
                 <ul class="navbar-nav ml-auto">
-                    <!-- <li class="nav-item active">
-              <a class="nav-link js-scroll-trigger" href="#Home">Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li> -->
                     <li class="nav-item">
                         <a id="chat-nav" class="nav-link js-scroll-trigger hide" href="#messageArea">Chatroom</a>
                     </li>
@@ -107,7 +102,7 @@
                     <div class="form-group">
                         <p style="color:red; margin-bottom: 0px" id="missinginfo"></p>
                         <label>Enter Name</label>
-                        <input class="form-control" id="username" />
+                        <input class="form-control" id="username" value="hey"/>
                         <br />
                         <p style="color:red; margin-bottom: 0px" id="missinginfo2"></p>
                         <label>Enter Room ID (Default 1)</label>
@@ -127,12 +122,12 @@
             <!-- Heading Row -->
             <div class="row my-4" style="margin-top: 0px !important;">
                 <div class="col-lg-7">
-
+<!-- 
                     <div class="nonmobile-hide"><b>Note: </b>Only the host can control the video using the native video player controls </div>
-                    <div class="mobile-hide"><b>Mobile User</b>, please play the video once manually to give the browser permission to control the video player. </div>
+                    <div class="mobile-hide"><b>Mobile User</b>, please play the video once manually to give the browser permission to control the video player. </div> -->
                     <!-- <hr style="height:0pt; visibility:hidden;" /> -->
 
-                    <div style="margin: 10px" class="dropdown">
+                    <div style="margin: 10px;display: none !important" class="dropdown">
                         <button style="background-color: #007bff" class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-video"></i> Player
                         </button>
@@ -181,8 +176,6 @@
 
                         <button id="syncbutton" onclick="syncVideo(roomnum);syncAlert()" style="margin-top:.5rem" class="btn btn-primary"><i class="fa fa-sync"></i> Sync</button>
 
-                        <button id="loveButton" onclick="loveLive(roomnum)" style="margin-top:.5rem" class="btn btn-primary"><i class="far fa-heart"></i> Random K-pop</button>
-                        <!-- <br/> -->
                         <button id="hostbutton" onclick="changeHost(roomnum)" style="margin-top:.5rem" class="btn btn-primary"><i class="fas fa-users"></i> Make me the host!</button>
                         <!-- Turn off the lights -->
                         <button id="lightButton" style="margin-top:.5rem" class="btn btn-primary switch"><i style="pointer-events:none;" class="fas fa-lightbulb"></i></button>
@@ -240,7 +233,6 @@
 
 
                 </div>
-
                 <!-- /.col-lg-8 -->
                 <div class="col-lg-5">
                     <!-- <div class="col-md-4"> -->
@@ -254,11 +246,14 @@
                             <ul class="list-group" id="users"></ul>
                         </div>
 
-                        <!-- Trigger the modal with a button -->
-                        <button style="background-color: #007bff" type="button" class="nonmobile-hide btn btn-info btn-sm invite-button" data-toggle="modal" data-target="#inviteModal"><i style="width: 30px; height: 30px;" class="fas fa-user-plus"></i><br><h5>Invite</h5></button>
+
+                        <ul class="list-group col-12 online-users" style="height: unset !important;">
+                          <li class="list-group-item" onclick="changeVideoParse(1, true, 'http://mediaserver:8000/english_vinglish.mp4')">English Vinglish</li>
+                        </ul>
                     </div>
                     <hr style="height:0pt; visibility:hidden;" />
-                    <h5 style="color:gray;">Chatroom</h5>
+
+                    <!-- <h5 style="color:gray;">Chatroom</h5> -->
 
                     <!-- Modal -->
                     <div id="inviteModal" class="modal fade" role="dialog">
@@ -288,7 +283,7 @@
                     <!-- </div> -->
                     <!-- </div> -->
 
-                    <div id="messageArea" class="row">
+                    <div id="messageArea" class="row" style="display: none">
                         <br/>
                         <!-- <h2 style="color:gray">Chat</h2> -->
                         <div class="col-md-12">
@@ -320,100 +315,9 @@
                 </div>
             </div>
 
-            <!-- Content Row -->
-            <!-- <div class="row">
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <h2 class="card-title">Card One</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">More Info</a>
-            </div>
-          </div>
-        </div> -->
-            <!-- /.col-md-4 -->
-            <!-- <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <h2 class="card-title">Card Two</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">More Info</a>
-            </div>
-          </div>
-        </div> -->
-            <!-- /.col-md-4 -->
-            <!-- <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <h2 class="card-title">Card Three</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">More Info</a>
-            </div>
-          </div>
-        </div> -->
-            <!-- /.col-md-4 -->
-
-            <!-- </div> -->
-            <!-- /.row -->
-
-            <!-- <hr style="height:20pt; visibility:hidden;" /> -->
-            <section id="about" class="bg-light">
-                <hr style="height:100pt; visibility:hidden;" />
-
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <h2>About Vynchronize</h2>
-                            <p class="lead">Vynchronize is a video synchronization platform created for viewing parties with friends!</p>
-                            <p> To use Vynchronize just enter your name and a shared room number with friends. Then all you have to do is select your video client (YouTube by default), enter a video ID, and click "Change Video". All video playback should
-                                be synchronized to everyone in the room! </p>
-                            <p> There is one host per room that can control the video client directly with the native player controls. Everyone else can still use them but it will only affect them until they hit sync!</p>
-                            <p> Have fun watching videos with friends!</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <hr style="height:20pt; visibility:hidden;" />
-
-            <section id="contact" class="bg-light">
-                <hr style="height:100pt; visibility:hidden;" />
-
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <h2>Contact Me</h2>
-                            <p class="lead">Who Am I?</p>
-                            <p> I'm Kyle! A student and developer just trying build software for the everyday user! I developed Vynchronize because it was a problem that I needed to solve myself, and now I continue to build it for the those who enjoy using
-                                it! :)</p>
-                            <p> You can contact me directly at <a href="mailto:kylelim8998@gmail.com?Subject=Vynchronize">kylelim8998@gmail.com</a> if you have any questions, concerns, or just to say hi! If you want to submit a suggestion, please see the
-                                github issues page.</p>
-                            <p> Also I want to keep the website up and running with an ad-free experience because I hate ads too! I'm currently paying for servers and a domain, but they are expensive to a broke college kid. If you would like to donate click
-                                below! I appreciate the support!</p>
-                            <a href="https://www.paypal.me/kylelim"><button style="margin-top:.5rem" class="btn btn-primary"><i class="far fa-heart"></i> Donate</button></a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <hr style="height:50pt; visibility:hidden;" />
-
         </div>
     </div>
     <!-- /.container -->
-
-    <!-- Footer -->
-    <footer id="footer" class="py-5 bg-dark footer">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Vynchronize 2018</p>
-        </div>
-        <!-- /.container -->
-    </footer>
-
     <script>
         var socket = io.connect();
         var roomnum = 1
@@ -529,7 +433,7 @@
                             $roomArea.show();
 
                             // Move footer to correct position
-                            document.getElementById('footer').style.position = 'relative';
+                            // document.getElementById('footer').style.position = 'relative';
 
                             // Show header buttons!
                             document.getElementById('chat-nav').style.display = 'block';
